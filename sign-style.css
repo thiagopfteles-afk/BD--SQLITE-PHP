@@ -1,0 +1,269 @@
+:root {
+    --cor-primaria: #1874a6;
+    --cor-secundaria: #067a74;
+    --cor-fundo: #212F4D;
+    --cor-botao: #1b9ee5;
+    --cinza-claro: #f0f0f0;
+    --cinza-escuro: #5c5c5c;
+    --cor-branca: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--cor-fundo);
+}
+
+.container {
+    background-color: var(--cor-branca);
+    border-radius: 20px;
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.7), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden; 
+    width: 860px;
+    max-width: 100%;
+    min-height: 600px;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+
+.form-container form {
+    background-color: var(--cor-branca);
+    display: flex;
+    padding: 50px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;    
+}
+
+form h1 {
+    margin-bottom: 10px;
+}
+
+.form-container input {
+    background-color: var(--cinza-claro);
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+    border-radius: 8px;
+    outline: none;
+}
+
+.instrucoes-senha {
+    font-size: 11px;
+    color: #777;
+    text-align: left;
+    padding-left: 5px;
+    margin: -5px 0 5px 0;
+}
+
+.form-container p {
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: var(--cinza-escuro);
+}
+
+.form-container a {
+    color: var(--cinza-escuro);
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px;
+}
+
+.social-icones a.icon {
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.social-icones a.icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.social-icones a.icon:hover {
+    background-color: #d2d2d2;
+    transform: scale(1.1);
+    transition: 250ms ease-in;
+}
+
+.btn {
+    border-radius: 20px;
+    border: 1px solid;
+    padding: 12px 45px;
+    margin-top: 15px;
+    background-color: var(--cor-botao);
+    color: var(--cor-branca);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing:2px;
+    font-size: 12px;
+    font-weight:bold;
+    transition: transform 80ms ease-in;
+}
+
+.btn:hover {
+    background-color: var(--cor-primaria);
+    transition: transform 0.3 ease;
+    transition: 250ms ease-in;
+    transform: scale(0.97);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    border-color: var(--cor-branca);
+    margin-top: 15px;
+}
+
+.btn-secundario:hover {
+    background-color: var(--cor-botao);
+    transition: 250ms ease-in;
+}
+
+.painel-sobreposicao h1 {
+    color: var(--cor-branca);
+}
+
+.painel-sobreposicao p {
+    margin-top: 20px;
+    color: var(--cor-branca);
+}
+
+.form-container.entrar {
+    left: 0;
+    width: 50%;
+}
+
+.form-container.cadastrar {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+}
+
+.container-sobreposicao {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.sobreposicao {
+    background: linear-gradient(to right, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-branca);
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.painel-sobreposicao {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+    width: 50%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.painel-esquerda {
+    transform: translateX(-20%);
+}
+
+.painel-direita {
+    right: 0;
+    transform: translateX(0);
+}
+
+/* LOGO CORRIGIDO */
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.container.ativo .form-container.entrar {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.container.ativo .form-container.cadastrar {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: mostrar 0.6s;
+}
+
+.container.ativo .container-sobreposicao {
+    transform: translateX(-100%);
+    border-radius: 10px 0 0 10px;
+}
+
+.container.ativo .sobreposicao {
+    transform: translateX(50%);
+}
+
+.container.ativo .painel-esquerda {
+    transform: translateX(0);
+}
+
+.container.ativo .painel-direita {
+    transform: translateX(20%);
+}
+
+.input-container {
+    width: 100%;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.mensagem-erro-php {
+    color: red;
+    background: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.mensagem-erro {
+    color: #ff3860;
+    font-size: 12px;
+    height: 13px;
+    margin-top: 5px;
+    text-align: left;
+}
